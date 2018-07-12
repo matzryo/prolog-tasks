@@ -26,3 +26,44 @@ class Array
     end
   end
 end
+
+class Array
+  def my_quicksort
+    return self if length <= 1
+
+    small, large = my_partition
+
+    small.my_quicksort + large.my_quicksort
+  end
+
+  private
+
+  def my_partition
+    left = 0
+    right = length - 1
+
+    while left < right
+      left, right = my_search(left, right)
+      break if left >= right
+      my_swap(left, right)
+    end
+
+    [self[0...left], self[left..-1]]
+  end
+
+  def pivot
+    self[(length / 2)]
+  end
+
+  def my_search(left, right)
+    left += 1 while self[left] < pivot
+    right -= 1 while self[right] > pivot
+    [left, right]
+  end
+
+  def my_swap(one, another)
+    tmp = self[one]
+    self[one] = self[another]
+    self[another] = tmp
+  end
+end

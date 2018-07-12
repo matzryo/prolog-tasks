@@ -45,3 +45,12 @@ describe '#my_fetch' do
   let(:index) { 1 }
   it { is_expected.to eq(ary[index]) }
 end
+
+describe '#my_quicksort' do
+  subject { ary.my_quicksort }
+  let(:ary) { [1, 7, 2, 4, 10] }
+  it { is_expected.to eq(ary.sort) }
+  it "test" do
+    is_expected.to eq(ary.sort)
+  end
+end
