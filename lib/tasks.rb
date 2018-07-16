@@ -1,8 +1,9 @@
-# 再帰
-def fact(num)
-  raise ArgumentError, 'nは0以上の値でなければなりません' if num < 0
-  return 1 if num.zero?
-  num * fact(num - 1)
+class Integer
+  def fact
+    raise RangeError, 'nは0以上の値でなければなりません' if self < 0
+    return 1 if zero?
+    self * (self - 1).fact
+  end
 end
 
 # refinementsで!メソッドを上書きする

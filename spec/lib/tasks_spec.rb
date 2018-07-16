@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'tasks'
 
 describe '#fact' do
-  subject { fact(num) }
+  subject { num.fact }
   context '0のとき' do
     let(:num) { 0 }
     it { is_expected.to eq(1) }
@@ -10,7 +10,7 @@ describe '#fact' do
   context '負の数のとき' do
     let(:num) { -1 }
     it 'エラーを返す' do
-      expect { subject }.to raise_error(ArgumentError)
+      expect { subject }.to raise_error(RangeError)
     end
   end
   context '正の数のとき' do
