@@ -52,7 +52,7 @@ describe '#my_quicksort' do
   it { is_expected.to eq(ary.sort) }
   it "非破壊的である" do
     original = ary.clone
-    ary.my_sort
+    ary.my_quicksort
     expect(ary).to eq(original)
   end
 end

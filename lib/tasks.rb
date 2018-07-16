@@ -29,12 +29,13 @@ class Array
 end
 
 class Array
-  def my_sort
-    cloned = clone
-    cloned.my_quicksort
+  def my_quicksort
+    clone.my_inner_quicksort
   end
 
-  def my_quicksort
+  protected
+
+  def my_inner_quicksort
     return self if length <= 1
 
     small, large = my_partition
