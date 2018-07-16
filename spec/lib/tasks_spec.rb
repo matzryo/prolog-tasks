@@ -3,7 +3,7 @@ require 'tasks'
 
 describe '#fact' do
   class Integer
-    prepend Factorial
+    include Factorial
   end
   subject { num.fact }
   context '0のとき' do
@@ -24,7 +24,7 @@ end
 
 describe '#my_include?' do
   class Array
-    prepend MyInclude
+    include MyInclude
   end
   subject { ary.my_include?(elm) }
   let(:ary) { [1, '2', nil]}
@@ -40,7 +40,7 @@ end
 
 describe '#my_concat' do
   class Array
-    prepend MyConcat
+    include MyConcat
   end
   subject { ary.my_concat(another) }
   let(:ary) { [1, '2', nil] }
@@ -50,7 +50,7 @@ end
 
 describe '#my_fetch' do
   class Array
-    prepend MyFetch
+    include MyFetch
   end
   subject { ary.my_fetch(index) }
   let(:ary) { [1, '2', nil] }
@@ -60,7 +60,7 @@ end
 
 describe '#my_quicksort' do
   class Array
-    prepend MyQuickSort1
+    include MyQuickSort1
   end
   subject { ary.my_quicksort }
   let(:ary) { [1, 7, 2, 4, 10] }
@@ -74,7 +74,7 @@ end
 
 describe '#my_quicksort2' do
   class Array
-    prepend MyQuickSort2
+    include MyQuickSort2
   end
   subject { ary.my_quicksort2 }
   let(:ary) { [1, 7, 2, 4, 10] }
