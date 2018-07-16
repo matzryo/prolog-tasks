@@ -1,47 +1,37 @@
 module Factorial
-  refine Integer do
     def fact
       raise RangeError, 'nは0以上の値でなければなりません' if self < 0
       return 1 if zero?
       self * (self - 1).fact
     end
-  end
 end
 
 module MyInclude
-  refine Array do
     def my_include?(target_element)
       each do |elm|
         return true if elm == target_element
       end
       false
     end
-  end
 end
 
 module MyConcat
-  refine Array do
     def my_concat(another)
       mycopy = inject([]) { |accum, elm| accum.push elm }
       another.inject(mycopy) { |accum, elm| accum.push elm }
     end
-  end
 end
   
 module MyFetch
-  refine Array do
     def my_fetch(index)
       each_with_index do |elm, i|
         return elm if i == index
       end
     end
-  end
 end
 
 module MyQuickSort1
-  refine Array do
     def my_quicksort
-      byebug
       # 非破壊的メソッドにしたい
       clone.my_inner_quicksort
     end
@@ -86,11 +76,9 @@ module MyQuickSort1
       self[one] = self[another]
       self[another] = tmp
     end
-  end
 end
 
 module MyQuickSort2
-  refine Array do
     def my_quicksort2
       return self if length <= 1
       # lastだと、無限再帰になりうる
@@ -99,5 +87,4 @@ module MyQuickSort2
       push pivot
       smaller.my_quicksort2.append + [pivot] + larger.my_quicksort2
     end
-  end
 end

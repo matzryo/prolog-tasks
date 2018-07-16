@@ -2,7 +2,9 @@ require 'spec_helper'
 require 'tasks'
 
 describe '#fact' do
-  using Factorial
+  class Integer
+    prepend Factorial
+  end
   subject { num.fact }
   context '0のとき' do
     let(:num) { 0 }
@@ -21,7 +23,9 @@ describe '#fact' do
 end
 
 describe '#my_include?' do
-  using MyInclude
+  class Array
+    prepend MyInclude
+  end
   subject { ary.my_include?(elm) }
   let(:ary) { [1, '2', nil]}
   context '含むとき' do
@@ -35,7 +39,9 @@ describe '#my_include?' do
 end
 
 describe '#my_concat' do
-  using MyConcat
+  class Array
+    prepend MyConcat
+  end
   subject { ary.my_concat(another) }
   let(:ary) { [1, '2', nil] }
   let(:another) { [3, '4', :five] }
@@ -43,7 +49,9 @@ describe '#my_concat' do
 end
 
 describe '#my_fetch' do
-  using MyFetch
+  class Array
+    prepend MyFetch
+  end
   subject { ary.my_fetch(index) }
   let(:ary) { [1, '2', nil] }
   let(:index) { 1 }
@@ -51,7 +59,9 @@ describe '#my_fetch' do
 end
 
 describe '#my_quicksort' do
-  using MyQuickSort1
+  class Array
+    prepend MyQuickSort1
+  end
   subject { ary.my_quicksort }
   let(:ary) { [1, 7, 2, 4, 10] }
   it { is_expected.to eq(ary.sort) }
@@ -63,7 +73,9 @@ describe '#my_quicksort' do
 end
 
 describe '#my_quicksort2' do
-  using MyQuickSort2
+  class Array
+    prepend MyQuickSort2
+  end
   subject { ary.my_quicksort2 }
   let(:ary) { [1, 7, 2, 4, 10] }
   it { is_expected.to eq(ary.sort) }
