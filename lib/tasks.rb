@@ -9,7 +9,7 @@ end
 class Array
   def my_include?(target_element)
     each do |elm|
-      return true if elm === target_element
+      return true if elm == target_element
     end
     false
   end
@@ -17,9 +17,10 @@ end
 
 class Array
   def my_concat(another)
-    mycopy = inject([]) {|accum, elm| accum.push elm }
-    another.inject(mycopy) {|accum, elm| accum.push elm }
+    mycopy = inject([]) { |accum, elm| accum.push elm }
+    another.inject(mycopy) { |accum, elm| accum.push elm }
   end
+  
   def my_fetch(index)
     each_with_index do |elm, i|
       return elm if i == index
@@ -70,5 +71,16 @@ class Array
     tmp = self[one]
     self[one] = self[another]
     self[another] = tmp
+  end
+end
+
+class Array
+  def my_quicksort2
+    return self if length <= 1
+    # lastだと、無限再帰になりうる
+    pivot = pop
+    smaller, larger = partition { |e| e < pivot }
+    push pivot
+    smaller.my_quicksort2.append + [pivot] + larger.my_quicksort2
   end
 end

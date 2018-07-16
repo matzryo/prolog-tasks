@@ -56,3 +56,14 @@ describe '#my_quicksort' do
     expect(ary).to eq(original)
   end
 end
+
+describe '#my_quicksort2' do
+  subject { ary.my_quicksort2 }
+  let(:ary) { [1, 7, 2, 4, 10] }
+  it { is_expected.to eq(ary.sort) }
+  it "非破壊的である" do
+    cloned = ary.clone
+    ary.my_quicksort2
+    expect(ary).to eq(cloned)
+  end
+end
