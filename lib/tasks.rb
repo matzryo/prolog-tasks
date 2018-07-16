@@ -28,6 +28,11 @@ class Array
 end
 
 class Array
+  def my_sort
+    cloned = clone
+    cloned.my_quicksort
+  end
+
   def my_quicksort
     return self if length <= 1
 
