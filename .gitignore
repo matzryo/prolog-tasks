@@ -4,3 +4,6 @@
 
 # byebug
 /.byebug_history
+
+# binstubs
+/bin
